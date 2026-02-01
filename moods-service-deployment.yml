@@ -1,0 +1,28 @@
+apiVersion: app/V1
+kind: Deployment
+metadata: 
+ name: moods-service-deployment
+spec:
+ replicas: 2
+ selector:
+  matchLabels:
+   labels:
+    component: moods-service
+  spec:
+   containers:
+    - name: moods-service
+     image: prashantdey/completeprojectb14:moodsapiv1.0
+     ports:
+      - containerPort: 5002
+     env:
+      - name: HOST
+        value: "0.0.0.0"
+      - name: PORT
+        value: 50052
+     resources:
+      requests:
+       cpu: "200m"
+       memory: "256Mi"
+      limit:
+       cpu: "500m"
+       memory: "512Mi"

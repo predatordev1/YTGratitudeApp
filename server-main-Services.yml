@@ -1,0 +1,11 @@
+apiVersion: V1
+kind: Service
+metadata:
+ - name: server-main-Services
+spec:
+ type: ClusterIP
+ selectors:
+  components: server-main
+ ports:
+  - port: 5001
+    targetPort: 5001

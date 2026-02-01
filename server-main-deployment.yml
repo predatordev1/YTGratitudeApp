@@ -1,0 +1,26 @@
+apiVersion: app/V1
+kind: Deployment
+metadata: 
+ name: server-main-deployment
+spec:
+ replicas: 2
+ selector:
+  matchLabels:
+   labels:
+    component: server-main
+  spec:
+   containers:
+    - name: server-main
+     image: prashantdey/completeprojectb14:servermainv1.0
+     ports:
+      - containerPort: 5001
+     env:
+      - name: MOODS_SERVICE_ADDR
+        value: "moods-service-cluster-ip-service:50052"
+     resources:
+      requests:
+       cpu: "200m"
+       memory: "256Mi"
+      limit:
+       cpu: "500m"
+       memory: "516Mi"

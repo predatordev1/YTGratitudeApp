@@ -1,0 +1,11 @@
+apiVersion: V1
+kind: Service
+metadata:
+ - name: stats-service-Services-Services
+spec:
+ type: ClusterIP
+ selectors:
+  components: stats-service
+ ports:
+  - port: 50053
+    targetPort: 50053
